@@ -3,7 +3,7 @@ br
 br
 
 - @courses.each do |course|
-  = course.coursename
+  =link_to course.coursename, course_path(course)
   br
   = course.coursetitle
   => link_to 'Edit', edit_course_path(course)

@@ -2,6 +2,11 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
   end
+  def show
+    @course = Course.find(params[:id])
+    @terms = @course.terms
+  end
+  end
   def new
     @course = Course.new
   end
