@@ -1,0 +1,9 @@
+= form_for @term do |f|
+  = f.label :termname
+  = f.text_field :termname
+  br
+  = f.label :definition
+  = f.text_area :definition, :class => "tinymce", :rows => 20, :cols => 40
+  br
+  = f.submit
+= tinymce

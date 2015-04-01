@@ -1,0 +1,12 @@
+=> link_to 'New term', new_term_path
+br
+br
+
+- @terms.each do |term|
+  = term.termname
+  br
+  = term.definition.html_safe
+  => link_to 'Edit', edit_term_path(term)
+  =< link_to 'Delete', term_path(term), method: :delete
+  br
+  br
