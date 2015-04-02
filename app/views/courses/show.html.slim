@@ -1,8 +1,10 @@
+
+
 = @course.coursename
 br
 = @course.coursetitle
 br
-- @terms.each do |term|
+- @courseterms.each do |term|
   = term.termname.html_safe
   br
   =term.definition.html_safe

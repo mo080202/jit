@@ -4,8 +4,8 @@ class CoursesController < ApplicationController
   end
   def show
     @course = Course.find(params[:id])
-    @terms = @course.terms
-  end
+    @courseterms = @course.terms
+    @terms = Term.all
   end
   def new
     @course = Course.new
