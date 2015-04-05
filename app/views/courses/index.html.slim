@@ -2,6 +2,7 @@
 .row
   .col-lg-12
     .page-header
+      p Course ID: #{session[:course_id]}
       h3 Just-in-Time Courses
     .table-responsive
       table.table.table-striped.table-hover
@@ -21,7 +22,7 @@
               td
                 = course.coursetitle
               td
-                = link_to 'View', course_path(course)
+                = link_to 'View', course_path(course), params: {course_id: course.id}
               td
                 = link_to 'Edit', edit_course_path(course)
               td

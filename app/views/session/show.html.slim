@@ -1,29 +1,11 @@
-=> link_to 'New course', new_course_path
-.row
-  .col-lg-12
-    .page-header
-      p Course ID: #{session[:course_id]}
-      h3 Just-in-Time Courses
-    .table-responsive
-      table.table.table-striped.table-hover
-        thead
-          tr
-            th Course ID
-            th Course Title
-            th
-            th
-            th
-
-        tbody
-          - @courses.each do |course|
-            tr
-              td
-                = course.coursename
-              td
-                = course.coursetitle
-              td
-                = link_to 'View', course_path(course), params: {course_id: course.id}
-              td
-                = link_to 'Edit', edit_course_path(course)
-              td
-                = link_to 'Delete', course_path(course), method: :delete
+br
+.jumbotron
+  h1 Just-In-Time
+  p Create courses, create terms, and add and remove terms from courses. Export your course terms for placement in BlackBoard's content collection when you are finished.
+  .row
+    .col-md-3
+      a.btn.btn-info.btn-lg href=courses_path
+        | Course list
+    .col-md-3
+      a.btn.btn-info.btn-lg href=terms_path
+        | Term List
