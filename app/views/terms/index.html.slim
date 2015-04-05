@@ -1,15 +1,18 @@
 => link_to 'New term', new_term_path
 br
 br
+.row
+  .col-lg-12
+    .page-header
+      h3 Dictionary
 
 - @terms.each do |term|
-  = term.termname
-  = term.definition.html_safe
-  | Is used in:
-  = term.all_courses
-  br
-  br
-  => link_to 'Edit', edit_term_path(term)
-  =< link_to 'Delete', term_path(term), method: :delete
-  br
-  br
+  .well.well-sm
+    h5 = term.termname.html_safe
+    =term.definition.html_safe
+    | Is used in:
+    = term.all_courses
+    br
+    br
+    => link_to 'Edit', edit_term_path(term)
+    =< link_to 'Delete', term_path(term), method: :delete

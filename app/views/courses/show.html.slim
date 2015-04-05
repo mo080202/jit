@@ -1,10 +1,16 @@
-
-
-= @course.coursename
-br
-= @course.coursetitle
+.row
+  .col-lg-12
+    .page-header
+      p Course ID:
+      = params[:id]
+      p Course ID: #{session[:course_id]}
+      h3
+        => @course.coursename
+        =< @course.coursetitle
 br
 - @courseterms.each do |term|
-  = term.termname.html_safe
-  br
-  =term.definition.html_safe
+  .well.well-sm
+    h5 = term.termname.html_safe
+    =term.definition.html_safe
+
+= link_to "Add/Remove terms", '/add'

@@ -1,8 +1,14 @@
-= form_for @course do |f|
-  = f.label :coursename
-  = f.text_field :coursename
-  br
-  = f.label :coursetitle
-  = f.text_field :coursetitle
-  br
-  = f.submit
+.form-horizontal
+  fieldset
+    legend Create a new course
+    .form-group
+      = form_for @course do |f|
+        = f.label :coursename, 'New Course ID:', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = f.text_field :coursename, class: 'form-control'
+          br
+        = f.label :coursetitle, 'New Course Title:', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = f.text_field :coursetitle, class: 'form-control'
+          br
+          = f.submit class: 'btn btn-primary'
