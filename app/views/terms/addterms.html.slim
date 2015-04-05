@@ -5,13 +5,16 @@ p Course ID: #{session[:course_id]}
       h3 Add a term to your course
 
 - @terms.each do |term|
-  .well.well-sm
-    h5 = term.termname
-    = term.definition.html_safe
-    | Is used in:
-    =< term.all_courses
-    - if has_not_added?(term)
-      = button_to 'Add', add_term_path(term)
-    -else
-      = button_to 'Remove', remove_term_path(term)
+    .row
+      .col-md-1.addremove
+        - if has_not_added?(term)
+          = button_to 'Add', add_term_path(term), class: 'btn btn-success'
+        -else
+          = button_to 'Remove', remove_term_path(term), class: 'btn btn-default'
+      .col-md-11
+        .well.well-sm
+          h5 = term.termname
+          = term.definition.html_safe
+          | Is used in:
+          =< term.all_courses
 = link_to 'Submit', course_path(session[:course_id])

@@ -14,3 +14,8 @@
  *= require_self
  */
  @import "bootstrap";
+
+ div.addremove{
+   padding: 25px 0px 0px 0px;
+   text-align: center;
+ }
