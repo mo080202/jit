@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
+  helper_method :sort_column, :sort_direction
   def index
-    @courses = Course.all
+    @courses = Course.order(sort_column + " " + sort_direction)
   end
   def show
     session[:course_id] = params[:id]
@@ -33,5 +34,10 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:coursename, :coursetitle)
   end
-
+  def sort_column
+    Course.column_names.include?(params[:sort]) ? params[:sort] : "coursename"
+  end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end
