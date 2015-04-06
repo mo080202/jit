@@ -8,6 +8,22 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @courseterms = @course.terms.order('termname ASC')
     @terms = Term.all
+    respond_to do |format|
+      format.html
+      format.json do
+        data = @courseterms.map do |t|
+          {
+            id: t.id,
+            term: t.termname
+          }
+        end
+        if params[:download].present?
+          send_data JSON.generate(data), filename: 'input.json'
+        else
+          render json:data
+        end
+      end
+    end
   end
   def new
     @course = Course.new
