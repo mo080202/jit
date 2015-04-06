@@ -19,3 +19,17 @@
    padding: 25px 0px 0px 0px;
    text-align: center;
  }
+
+ body { padding-bottom: 70px; }
+
+
+ li.icon{
+   padding: 0px 0px 0px 0px;
+   text-align: center;
+   font-size : 10px;
+ }
+
+ span.glyph{
+   font-size : 18px;
+   text-align: center;
+ }
