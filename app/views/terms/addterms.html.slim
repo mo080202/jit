@@ -1,8 +1,12 @@
 p Course ID: #{session[:course_id]}
 .row
-  .col-lg-12
-    .page-header
-      h3 Add a term to your course
+  .col-lg-10
+    h3 Dictionary
+  .col-lg-2.icon
+    a href=new_term_path
+      span.glyphicon.glyphicon-pencil.glyph aria-hidden="true"
+      br
+      | New term
 
 - @terms.each do |term|
     .row

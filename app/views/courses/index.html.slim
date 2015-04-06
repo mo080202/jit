@@ -1,29 +1,31 @@
-=> link_to 'New course', new_course_path
 .row
-  .col-lg-12
-    .page-header
-      p Course ID: #{session[:course_id]}
-      h3 Courses
-    .table-responsive
-      table.table.table-striped.table-hover
-        thead
-          tr
-            th =sortable "coursename", "Course ID"
-            th =sortable "coursetitle", "Course Title"
-            th
-            th
-            th
+  .col-lg-10
+    h3 Courses
+  .col-lg-2.icon
+    a href=new_course_path
+      span.glyphicon.glyphicon-blackboard.glyph aria-hidden="true"
+      br
+      | New course
+.table-responsive
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th =sortable "coursename", "Course ID"
+        th =sortable "coursetitle", "Course Title"
+        th
+        th
+        th
 
-        tbody
-          - @courses.each do |course|
-            tr
-              td
-                = course.coursename
-              td
-                = course.coursetitle
-              td
-                = link_to 'View', course_path(course), params: {course_id: course.id}
-              td
-                = link_to 'Edit', edit_course_path(course)
-              td
-                = link_to 'Delete', course_path(course), method: :delete
+    tbody
+      - @courses.each do |course|
+        tr
+          td
+            = course.coursename
+          td
+            = course.coursetitle
+          td
+            = link_to 'View', course_path(course), params: {course_id: course.id}
+          td
+            = link_to 'Edit', edit_course_path(course)
+          td
+            = link_to 'Delete', course_path(course), method: :delete

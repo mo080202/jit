@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   def show
     session[:course_id] = params[:id]
     @course = Course.find(params[:id])
-    @courseterms = @course.terms
+    @courseterms = @course.terms.order('termname ASC')
     @terms = Term.all
   end
   def new

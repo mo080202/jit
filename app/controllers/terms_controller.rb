@@ -1,9 +1,9 @@
 class TermsController < ApplicationController
   def index
-    @terms = Term.all
+    @terms = Term.all.order('termname ASC')
   end
   def addterms
-    @terms = Term.all
+    @terms = Term.all.order('termname ASC')
   end
   def new
     @term = Term.new
