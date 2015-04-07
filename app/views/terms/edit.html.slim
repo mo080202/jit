@@ -1,17 +1,4 @@
 .form-horizontal
   fieldset
     legend Edit a term
-    .form-group
-      = form_for @term do |f|
-        = f.label :termname, 'Trigger text:', class: 'col-lg-2 control-label'
-        .col-lg-10
-          = f.text_field :termname, class: 'form-control'
-          br
-        = f.label :definition, 'Pop-up content:', class: 'col-lg-2 control-label'
-        br
-        br
-        .col-lg-10
-          = f.text_area :definition, :class => "tinymce", :rows => 8, :cols => 5
-          br
-          = f.submit class: 'btn btn-primary'
-= tinymce
+= render 'form'

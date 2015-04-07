@@ -3,6 +3,8 @@ class TermsController < ApplicationController
     @terms = Term.all.order('termname ASC')
   end
   def addterms
+    @course = Course.find(session[:course_id])
+    session[:coursename] = @course.coursename
     @terms = Term.all.order('termname ASC')
   end
   def new
@@ -37,7 +39,7 @@ class TermsController < ApplicationController
   end
   private
   def term_params
-    params.require(:term).permit(:termname, :definition)
+    params.require(:term).permit(:termname, :definition, :all_tags)
   end
   def has_not_added?(term)
     term.termlists.where(course_id: current_course.id).empty?
