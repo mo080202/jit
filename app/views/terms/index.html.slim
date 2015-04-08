@@ -15,7 +15,8 @@
     br
     | Tag(s):
     / =< term.all_tags
-    =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t) }.join(', ')
+    / =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t) }.join(', ')
+    =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t), class: 'label label-info' }.join(' ')
 
 / a.icon href=edit_term_path(term) data-toggle="tooltip" data-placement="bottom" title="Edit"
 /   span.glyphicon.glyphicon-edit.glyph aria-hidden="true"
