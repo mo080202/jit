@@ -7,12 +7,18 @@
       br
       | New term
 
+- if params[:tag]
+  h4 Terms with the #{params[:tag]} tag  
 - @terms.each do |term|
   .well.well-sm
     h5 = term.termname.html_safe
     =term.definition.html_safe
     | Is used in:
-    = term.all_courses
+    =< term.all_courses
+    br
+    | Tag(s):
+    / =< term.all_tags
+    =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t) }.join(', ')
     br
     br
     => link_to 'Edit', edit_term_path(term)

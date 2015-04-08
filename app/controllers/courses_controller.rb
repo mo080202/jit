@@ -14,7 +14,8 @@ class CoursesController < ApplicationController
         data = @courseterms.map do |t|
           {
             id: t.id,
-            term: t.termname
+            term: t.termname,
+            type: 'html'
           }
         end
         if params[:download].present?

@@ -14,6 +14,10 @@ class Term < ActiveRecord::Base
     self.courses.map(&:coursename).join(", ")
   end
 
+  def self.tagged_with(tagname)
+    Tag.find_by_tagname!(tagname).terms
+  end
+
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
       Tag.where(tagname: name.strip).first_or_create!

@@ -1,6 +1,10 @@
 class TermsController < ApplicationController
   def index
-    @terms = Term.all.order('termname ASC')
+    if params[:tag]
+      @terms = Term.tagged_with(params[:tag]).order('termname ASC')
+    else
+      @terms = Term.all.order('termname ASC')
+    end
   end
   def addterms
     @course = Course.find(session[:course_id])
@@ -12,6 +16,7 @@ class TermsController < ApplicationController
   end
   def create
     term = Term.create(term_params)
+    # If statement on path
     redirect_to terms_path
   end
   def edit

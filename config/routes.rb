@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     end
   end
   resources :courses
+  get 'tags/:tag', to: 'terms#index', as: :tag
   get '/add' => 'terms#addterms'
 end

@@ -1,12 +1,17 @@
 .row
-  .col-lg-12
-    .page-header
-      p Course ID:
-      = params[:id]
-      p Course ID: #{session[:course_id]}
-      h3
-        => @course.coursename
-        =< @course.coursetitle
+  .col-lg-10
+    / .page-header
+      / p Course ID:
+      / = params[:id]
+      / p Course ID: #{session[:course_id]}
+    h3
+      => @course.coursename
+      =< @course.coursetitle
+  .col-lg-2.icon
+    a href=new_term_path
+      span.glyphicon.glyphicon-pencil.glyph aria-hidden="true"
+      br
+      | New term
 br
 - @courseterms.each do |term|
   .well.well-sm
