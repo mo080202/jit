@@ -1,14 +1,8 @@
 .row
-  .col-lg-10
+  .page-header
     h3 Dictionary
-  .col-lg-2.icon
-    a href=new_term_path
-      span.glyphicon.glyphicon-pencil.glyph aria-hidden="true"
-      br
-      | New term
-
 - if params[:tag]
-  h4 Terms with the #{params[:tag]} tag  
+  h4 Terms with the #{params[:tag]} tag
 - @terms.each do |term|
   .well.well-sm
     h5 = term.termname.html_safe

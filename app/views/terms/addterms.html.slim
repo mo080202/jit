@@ -1,7 +1,12 @@
-.row
-  .col-lg-10
-    h3 Add/Remove Terms to/from #{session[:coursename]}
+- content_for :addterms do
+  ul.nav.navbar-nav.navbar-right
+    li.icon
+      a href=course_path(session[:course_id]) data-toggle="tooltip" data-placement="bottom" title="Submit changes"
+        span.glyphicon.glyphicon-saved.glyph aria-hidden="true"
 
+.row
+  .page-header
+    h3 Add/Remove Terms to/from #{session[:coursename]}
 - @terms.each do |term|
     .row
       .col-md-1.addremove
@@ -15,4 +20,3 @@
           = term.definition.html_safe
           | Is used in:
           =< term.all_courses
-= link_to 'Submit', course_path(session[:course_id])

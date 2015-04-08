@@ -11,9 +11,34 @@ html
     = csrf_meta_tags
     = yield :head
   body
+    - unless current_page?(root_url)
+      header.navbar.navbar-default.navbar-fixed-top
+        .container
+          .navbar-header
+            a.navbar-brand href="../"  Just-In-Time Dictionary
+            button.navbar-toggle data-target="#navbar-main" data-toggle="collapse" type="button"
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          #navbar-main.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                a href=courses_path Courses
+              li
+                a href=terms_path Dictionary
+            ul.nav.navbar-nav.navbar-right
+              li.icon
+                a href=new_course_path data-toggle="tooltip" data-placement="bottom" title="New Course"
+                  span.glyphicon.glyphicon-blackboard.glyph aria-hidden="true"
+              li.icon
+                a href=new_term_path data-toggle="tooltip" data-placement="bottom" title="New Term"
+                  span.glyphicon.glyphicon-pencil.glyph aria-hidden="true"
+            - if content_for?(:showcourse)
+              = yield :showcourse
+            - if content_for(:addterms)
+              = yield :addterms
+
     .container
-      = render 'header'
-      br
       br
       br
       br

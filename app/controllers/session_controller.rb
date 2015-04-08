@@ -6,5 +6,4 @@ class SessionController <ApplicationController
     session[:course_id] = params[:id]
     redirect_to course_path(course)
   end
-
 end
