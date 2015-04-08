@@ -11,9 +11,9 @@
     .row
       .col-md-1.addremove
         - if has_not_added?(term)
-          = button_to 'Add', add_term_path(term), class: 'btn btn-success'
+          = button_to 'Add', add_term_path(term), class: 'btn btn-success', remote: true
         -else
-          = button_to 'Remove', remove_term_path(term), class: 'btn btn-default'
+          = button_to 'Remove', remove_term_path(term), class: 'btn btn-default', remote: true
       .col-md-11
         .well.well-sm
           h5 = term.termname

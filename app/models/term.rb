@@ -13,7 +13,6 @@ class Term < ActiveRecord::Base
   def all_courses
     self.courses.map(&:coursename).join(", ")
   end
-
   def self.tagged_with(tagname)
     Tag.find_by_tagname!(tagname).terms
   end
