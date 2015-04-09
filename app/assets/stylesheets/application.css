@@ -37,7 +37,24 @@
  span.glyph{
    font-size : 20px;
    text-align: center;
+   padding: 0px 0px -10px 0px;
  }
+
+ span.glyph-intext{
+   font-size : 18px;
+   text-align: center;
+   vertical-align: middle;
+   padding: 0px 5px 0px 0px;
+ }
+
+div.tag{
+  padding: 10px 0px 0px 0px;
+}
+
+div.icontext{
+  padding: -10px 0px -10px 0px;
+  vertical-align: top;
+}
 
  div.icon{
    text-align: center;

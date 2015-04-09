@@ -18,5 +18,11 @@
         .well.well-sm
           h5 = term.termname
           = term.definition.html_safe
-          | Is used in:
-          =< term.all_courses
+          - unless term.termlists.empty?
+            | Used in:
+            =< term.all_courses
+          - unless term.taggings.empty?
+            br
+            .tag
+              span.glyphicon.glyphicon-tags.glyph-intext aria-hidden="true"
+              =>< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t), class: 'label label-info' }.join(' ')

@@ -7,22 +7,20 @@ class CoursesController < ApplicationController
     session[:course_id] = params[:id]
     @course = Course.find(params[:id])
     @courseterms = @course.terms.order('termname ASC')
-    @terms = Term.all
-
-
     respond_to do |format|
       format.html do
         if params[:download].present?
-          response.headers["content-disposition"] = "attachment; filename=important.html"
+          response.headers["content-disposition"] = "attachment; filename=index.html"
           render "simple_html", layout: nil
         end
       end
       format.json do
         data = @courseterms.map do |t|
           {
-            id: t.id,
-            term: t.termname,
-            type: 'html'
+            name: t.termname,
+            title: t.definition,
+            type: 'html',
+            cssClass: 'largeToolTip'
           }
         end
         if params[:download].present?
