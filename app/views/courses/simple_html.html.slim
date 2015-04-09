@@ -1,0 +1,13 @@
+html
+  head
+    link href="https://bootswatch.com/paper/bootstrap.css" rel="stylesheet"
+  body  
+    h3
+      => @course.coursename
+      =< @course.coursetitle
+    - if @course.termlists.exists?
+      - @courseterms.each do |term|
+        h5 = term.termname.html_safe
+        =term.definition.html_safe
+    - else
+      p You have no terms!

@@ -13,10 +13,13 @@
     h3
       => @course.coursename
       =< @course.coursetitle
-- @courseterms.each do |term|
-  .well.well-sm
-    h5 = term.termname.html_safe
-    =term.definition.html_safe
+- if @course.termlists.exists?
+  - @courseterms.each do |term|
+    .well.well-sm
+      h5 = term.termname.html_safe
+      =term.definition.html_safe
+- else
+  p You have no terms!
 
 / = link_to "Add/Remove terms", '/add'
 / = link_to 'Download JSON', course_path(format: :json, download: true)

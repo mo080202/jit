@@ -8,8 +8,15 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @courseterms = @course.terms.order('termname ASC')
     @terms = Term.all
+
+
     respond_to do |format|
-      format.html
+      format.html do
+        if params[:download].present?
+          response.headers["content-disposition"] = "attachment; filename=important.html"
+          render "simple_html", layout: nil
+        end
+      end
       format.json do
         data = @courseterms.map do |t|
           {

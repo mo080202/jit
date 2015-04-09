@@ -10,13 +10,13 @@
     | |
     =< link_to 'Delete', term_path(term), method: :delete
     =term.definition.html_safe
-    | Is used in:
-    =< term.all_courses
-    br
-    | Tag(s):
-    / =< term.all_tags
-    / =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t) }.join(', ')
-    =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t), class: 'label label-info' }.join(' ')
+    - unless term.termlists.empty?
+      | Is used in:
+      =< term.all_courses
+    - unless term.taggings.empty?
+      br
+      | Tag(s):
+      =< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t), class: 'label label-info' }.join(' ')
 
 / a.icon href=edit_term_path(term) data-toggle="tooltip" data-placement="bottom" title="Edit"
 /   span.glyphicon.glyphicon-edit.glyph aria-hidden="true"

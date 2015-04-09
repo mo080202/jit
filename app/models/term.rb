@@ -1,6 +1,6 @@
 class Term < ActiveRecord::Base
   has_many :termlists
-  has_many :courses, through: :termlists
+  has_many :courses, dependent: :destroy, through: :termlists
   has_many :taggings
   has_many :tags, dependent: :destroy, through: :taggings
 
