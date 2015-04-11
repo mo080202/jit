@@ -26,6 +26,10 @@ html
                 a href=courses_path Courses
               li
                 a href=terms_path Dictionary
+            - if content_for?(:termsearch)
+              = yield :termsearch
+            - if content_for?(:addtermsearch)
+              = yield :addtermsearch  
             ul.nav.navbar-nav.navbar-right
               li.icon
                 a href=new_course_path data-toggle="tooltip" data-placement="bottom" title="New Course"

@@ -1,8 +1,16 @@
+- content_for :termsearch do
+  form.navbar-form.navbar-left role="search"
+    .form-group
+    = form_tag(terms_path, :method => 'get', class: 'form-group') do
+      = text_field_tag :search, params[:search], placeholder: "Term name search", class: 'form-control'
+      = submit_tag "Search", :name => nil, class: 'btn btn-default btn-xs'
 .row
   .page-header
     h3 Dictionary
 - if params[:tag]
   h4 Terms with the #{params[:tag]} tag
+- elsif params[:search]
+  h4 Results for #{params[:search]} search
 - @terms.each do |term|
   .well.well-sm
     h5 = term.termname.html_safe

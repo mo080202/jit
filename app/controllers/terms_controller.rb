@@ -1,6 +1,8 @@
 class TermsController < ApplicationController
   def index
-    if params[:tag]
+    if params[:search]
+      @terms = Term.search(params[:search])
+    elsif params[:tag]
       @terms = Term.tagged_with(params[:tag]).order('termname ASC')
     else
       @terms = Term.all.order('termname ASC')
@@ -9,7 +11,11 @@ class TermsController < ApplicationController
   def addterms
     @course = Course.find(session[:course_id])
     session[:coursename] = @course.coursename
-    @terms = Term.all.order('termname ASC')
+    if params[:search]
+      @terms = Term.search(params[:search])
+    else
+      @terms = Term.all.order('termname ASC')
+    end
   end
   def new
     @term = Term.new

@@ -3,7 +3,7 @@ class Term < ActiveRecord::Base
   has_many :courses, dependent: :destroy, through: :termlists
   has_many :taggings
   has_many :tags, dependent: :destroy, through: :taggings
-
+  validates :termname, :definition, :presence => true
   def all_courses=(names)
     self.courses = names.split(",").map do |name|
       Course.where(coursename: name.strip).first_or_create!
@@ -32,4 +32,7 @@ class Term < ActiveRecord::Base
     self.tags.map(&:tagname).join(", ")
   end
 
+  def self.search(query)
+    where("termname ilike ?", "%#{query}%") 
+  end
 end
