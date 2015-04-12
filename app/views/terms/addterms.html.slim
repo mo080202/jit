@@ -15,8 +15,12 @@
     h3 Add/Remove Terms to/from #{session[:coursename]}
 - if params[:tag]
   h4 Terms with the #{params[:tag]} tag
+  a href='/add' data-toggle="tooltip" data-placement="bottom" title="Clear tag filter"
+    | (Clear tag filter)
 - elsif params[:search]
   h4 Results for #{params[:search]} search
+  a href='/add' data-toggle="tooltip" data-placement="bottom" title="Clear search"
+    | (Clear search)
 - @terms.each do |term|
     .row
       .col-md-1.addremove
