@@ -1,8 +1,8 @@
-/ -if @term.errors.present?
-/   .alert.alert-danger role="alert"
-/     ul
-/       -for error in @term.errors.full_messages
-/         li= error
+- if @term.errors.present?
+  .alert.alert-danger role="alert"
+    ul
+      -for error in @term.errors.full_messages
+        li= error
 .form-group
   = form_for @term do |f|
     = f.label :termname, 'Trigger text:', class: 'col-lg-2 control-label'

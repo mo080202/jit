@@ -13,6 +13,8 @@ class TermsController < ApplicationController
     session[:coursename] = @course.coursename
     if params[:search]
       @terms = Term.search(params[:search])
+    elsif params[:tag]
+      @terms = Term.tagged_with(params[:tag]).order('termname ASC')
     else
       @terms = Term.all.order('termname ASC')
     end
@@ -21,9 +23,12 @@ class TermsController < ApplicationController
     @term = Term.new
   end
   def create
-    term = Term.create(term_params)
-    # If statement on path
-    redirect_to terms_path
+    @term = Term.create(term_params)
+    if @term.save
+      redirect_to terms_path
+    else
+        render 'new'
+    end
   end
   def edit
     @term = Term.find(params[:id])

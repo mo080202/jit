@@ -13,6 +13,10 @@
 .row
   .page-header
     h3 Add/Remove Terms to/from #{session[:coursename]}
+- if params[:tag]
+  h4 Terms with the #{params[:tag]} tag
+- elsif params[:search]
+  h4 Results for #{params[:search]} search
 - @terms.each do |term|
     .row
       .col-md-1.addremove
@@ -31,4 +35,4 @@
             br
             .tag
               span.glyphicon.glyphicon-tags.glyph-intext aria-hidden="true"
-              =>< raw term.tags.map(&:tagname).map { |t| link_to t, tag_path(t), class: 'label label-info' }.join(' ')
+              =>< raw term.tags.map(&:tagname).map { |t| link_to t, addtag_path(t), class: 'label label-info' }.join(' ')

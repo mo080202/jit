@@ -1,8 +1,8 @@
-/ -if @course.errors.present?
-/   .alert.alert-danger role="alert"
-/     ul
-/       -for error in @course.errors.full_messages
-/         li= error
+-if @course.errors.present?
+  .alert.alert-danger role="alert"
+    ul
+      -for error in @course.errors.full_messages
+        li= error
 .form-group
   = form_for @course do |f|
     = f.label :coursename, 'New Course ID:', class: 'col-lg-2 control-label'
