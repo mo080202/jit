@@ -1,8 +1,10 @@
 -if @course.errors.present?
-  .alert.alert-danger role="alert"
+  .alert.alert-dismissible.alert-danger
+    button.close type="button" data-dismiss="alert" ×
+    h4 Error
     ul
       -for error in @course.errors.full_messages
-        li= error
+        li.jitalert = error
 .form-group
   = form_for @course do |f|
     = f.label :coursename, 'New Course ID:', class: 'col-lg-2 control-label'

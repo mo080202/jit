@@ -60,3 +60,7 @@ div.icontext{
    text-align: center;
    vertical-align: bottom;
  }
+
+li.jitalert {
+  list-style-type: none;
+}

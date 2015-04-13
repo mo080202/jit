@@ -3,7 +3,7 @@ class Term < ActiveRecord::Base
   has_many :courses, dependent: :destroy, through: :termlists
   has_many :taggings
   has_many :tags, dependent: :destroy, through: :taggings
-  validates_presence_of :termname, :definition, :on => :create
+  validates_presence_of :termname, :definition
   def all_courses=(names)
     self.courses = names.split(",").map do |name|
       Course.where(coursename: name.strip).first_or_create!
